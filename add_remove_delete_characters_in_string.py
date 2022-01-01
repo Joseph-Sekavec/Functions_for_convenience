@@ -44,7 +44,7 @@ def replace_extra_spaces(arr, b): # This will replace any extra spaces with a ch
 #######################################################################################################################
 # This is a routine that takes in a string, the place you want to add something in, and the character you want to add
 # add_char(string, where to add a character, character you want to add)
-def add_char(string_name, position, char_name):
+def add_char(string_name, position, char_name): 
     if position == "front_and_back":
         s = char_name
         for k in string_name:
@@ -77,7 +77,30 @@ def add_char(string_name, position, char_name):
     if position == "extra_spaces" or position == "extra_space":
         return replace_extra_spaces(string_name, char_name)
 
-#def rem_char(string_name, position_begin, position_stop)
+    
+    
+    
+    
+def rem_char(string_name, a, b, char_name): # You must enter rem_char(string, what number of desired characters must appear before we start removing, stop after this many, character you want to remove)
+    position_flag = 0
+    target_index = 0;
+    s=""
+    for k in string_name:
+        position_flag+=1
+        if k == char_name and target_index<a:
+            target_index+=1
+            print(k)
+        if target_index==a:
+            break    
+    for k in range(len(string_name)):
+        if string_name[k] == char_name and k>=position_flag and target_index>=a and target_index<b:
+            target_index+=1
+            s+=""
+        else:
+            s+=string_name[k]
+    print(s)
+    print(target_index)
+    return s
 
 
 
@@ -90,3 +113,4 @@ def add_char(string_name, position, char_name):
 #print(add_char("Hello  world", "extra_spaces", ".")) # works
 
 #print(add_char(input("Input a string: "), input("Where to add character?"), input("What character? "))) # works
+print(rem_char("Hello world llll hello", 3,7, "l"))
